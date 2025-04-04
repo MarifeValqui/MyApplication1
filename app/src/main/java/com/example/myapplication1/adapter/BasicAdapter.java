@@ -12,9 +12,9 @@ import com.example.myapplication1.R;
 
 import java.util.List;
 
-public class BasicAdapter extends RecyclerView.Adapter<BasicAdapter.BasicViewHolder>{
-    private List<String> data;
-    public BasicAdapter(List<String> data) {
+public class BasicAdapter extends RecyclerView.Adapter<BasicAdapter.BasicViewHolder> {
+    private List<Persona> data;
+    public BasicAdapter(List<Persona> data) {
         this.data = data;
     }
 
@@ -28,8 +28,10 @@ public class BasicAdapter extends RecyclerView.Adapter<BasicAdapter.BasicViewHol
     @Override
     public void onBindViewHolder(@NonNull BasicViewHolder holder, int position) {
         TextView tvText = holder.itemView.findViewById(R.id.tvText);
-        String text = data.get(position);
-        tvText.setText(text);
+        Persona persona = data.get(position);
+        holder.tvNombre.setText(persona.getNombre());
+        holder.tvNumber.setText(persona.getNumeroDeCelular());
+
     }
 
     @Override
@@ -38,9 +40,11 @@ public class BasicAdapter extends RecyclerView.Adapter<BasicAdapter.BasicViewHol
     }//<> Conocido como tipo genérico = List<String>//<Integer>
 
     public class BasicViewHolder extends RecyclerView.ViewHolder{
+        TextView tvNombre, tvNumber;
         public BasicViewHolder(@NonNull View itemView){
             super(itemView);
+            tvNombre = itemView.findViewById(R.id.tvNombre);
+            tvNumber = itemView.findViewById(R.id.tvNumero);
  }
 }
 }
-

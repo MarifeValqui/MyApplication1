@@ -1,6 +1,8 @@
 package com.example.myapplication1;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,19 +29,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        List<String> data = new ArrayList<>();
-        data.add("Dato 1");
-        data.add("Dato 2");
-        data.add("Dato 3");
-        data.add("Dato 4");
-        data.add("Dato 5");
-
-
-        RecyclerView rvBasic = findViewById(R.id.rvBasic);
-        rvBasic.setLayoutManager(new LinearLayoutManager(this));
-        BasicAdapter adapter = new BasicAdapter(data);
-        rvBasic.setAdapter(adapter);
+        Button btnChangeView = findViewById(R.id.btnlogin);
+        btnChangeView.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+});
 
     }
 }
